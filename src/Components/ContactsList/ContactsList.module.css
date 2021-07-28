@@ -1,0 +1,29 @@
+.list {
+  width: 500px;
+  padding-left: 0;
+}
+.item {
+  display: flex;
+  flex-direction: iherit;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid blue;
+  border-radius: 10px;
+  list-style: none;
+  margin: 3px;
+  margin-left: auto;
+  padding: 5px;
+}
+
+.name {
+  margin: 0;
+}
+
+.btn {
+  color: rgb(0, 0, 0);
+  background-color: rgb(253, 119, 101);
+  padding: 5px 10px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  margin-right: 10px;
+}
