@@ -3,9 +3,9 @@ import shortid from 'shortid';
 import PropTypes, { shape } from 'prop-types';
 import './App.css';
 
-import ContactsList from "./Components/ContactsList";
+import ContactsList from "./Components/ContactsList/ContactsList";
 import ContactsForm from "./Components/ContactsForm/ContactsForm";
-import Filter from "./Components/Filter";
+import Filter from "./Components/Filter/Filter";
 
 
 class App extends Component {
@@ -37,7 +37,6 @@ class App extends Component {
     };
     addContact = (name, number) => {
         const isInContacts = this.state.contacts.some(contact => contact.name === name)
-
         if (isInContacts) { alert(`${name} is already in contacts.`); return }
         
         if (name && number) {
@@ -65,7 +64,7 @@ class App extends Component {
         const contacts = localStorage.getItem('contacts');
         const parsContacts = JSON.parse(contacts);
         if (parsContacts) {
-            this.state({ contacts: parsContacts });
+            this.setState({ contacts: parsContacts });
         }
     }
     componentDidUpdate(prevState) {
