@@ -35,6 +35,20 @@ class App extends Component {
             { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },],
         filter: '',
     };
+
+componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState( {contacts: parsedContacts});
+    }
+  }
+    componentDidUpdate(prevState) {
+        if (this.state.contacts !== prevState.contacts) {
+            localStorage.setItem('contacts', JSON.stringify(this.state.contacts));            
+    }
+}
+
     addContact = (name, number) => {
         const isInContacts = this.state.contacts.some(contact => contact.name === name)
         if (isInContacts) { alert(`${name} is already in contacts.`); return }
@@ -60,18 +74,7 @@ class App extends Component {
         this.setState({ filter: event.currentTarget.value })
     }
 
-     componentDidMount() {
-    const contacts = localStorage.getItem('contacts');
-    const parsedContacts = JSON.parse(contacts);
-    if (parsedContacts) {
-      this.setState( {contacts: parsedContacts});
-    }
-  }
-    componentDidUpdate(prevState) {
-        if (this.state.contacts !== prevState.contacts) {
-            localStorage.setItem('contacts', JSON.stringify(this.state.contacts));            
-    }
-}
+     
     render() {
         const { contacts, filter } = this.state;
         const totalContactsCount = contacts.length;
